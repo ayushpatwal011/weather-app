@@ -1,59 +1,69 @@
-# Weather
+# Modern Weather Map Application 🌍🌤️
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.5.
+Welcome to the **Modern Weather Map**! This project is a visually stunning, beginner-friendly Angular application that combines interactive maps with live weather data.
 
-## Development server
+This project was built with **Angular 21**, **OpenLayers** (for maps), **Chart.js** (for weather graphs), and **Angular Material** (for UI components).
 
-To start a local development server, run:
+## ✨ Features
 
+- **Interactive Fullscreen Map**: Built with OpenLayers. You can pan, zoom, click, and even use the "Locate Me" button to find your current area.
+- **Smart Search**: Search for any city in the world, or enter raw Latitude and Longitude coordinates.
+- **Live Weather Data**: Get the current temperature and a beautiful 7-day forecast graph built with Chart.js.
+- **Saved Locations**: Bookmark your favorite places. The app remembers them and plots blue pins on the map for easy access.
+
+---
+
+## 🚀 Getting Started (For Beginners)
+
+If you are new to Angular, don't worry! Follow these steps to get the project running on your own computer.
+
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) installed.
+
+### Installation
+1. Open your terminal (or Command Prompt).
+2. Navigate into the project folder (`weather`).
+3. Run the following command to install all the required libraries:
+   ```bash
+   npm install
+   ```
+
+### Running the App
+Once everything is installed, start the local development server:
 ```bash
-ng serve
+npm start
 ```
+Open your browser and navigate to `http://localhost:4200/`. You should see the map!
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🧩 Understanding the Code (Project Structure)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+The code is organized into a few simple pieces inside the `src/app/` folder. Here is how they work together:
 
-```bash
-ng generate component component-name
-```
+### 1. `components/` (The Visual Parts)
+Components are the building blocks of the screen.
+- **`map`**: Controls the OpenLayers map (`map.ts`), handles map clicks, places the red/blue pins, and interacts with the browser's Geolocation API.
+- **`search-bar`**: The input box where you type city names or coordinates. It asks the data service to find the location.
+- **`weather-panel`**: Displays the current temperature and draws the 7-day forecast line chart using Chart.js.
+- **`saved-locations`**: The list in the sidebar. It uses an Angular Material Table (`mat-table`) to show your bookmarked places.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 2. `services/` (The Brains)
+Services handle data behind the scenes.
+- **`weather.service.ts`**: This is the most vital file for data! 
+  - It talks to **Nominatim (OpenStreetMap)** to convert City Names into Map Coordinates (and vice versa).
+  - It talks to the **Open-Meteo API** to fetch the live weather and 7-day forecast (without needing any API keys!).
+  - It safely stores your bookmarked locations into the browser's memory (`localStorage`) so they don't disappear when you refresh the page.
 
-```bash
-ng generate --help
-```
+### 3. `models/` (The Data Shapes)
+- **`weather.ts`**: Defines what our data look like (e.g., what properties a `Location` or `WeatherData` object has). This makes TypeScript happy and helps prevent typing errors.
 
-## Building
+---
 
-To build the project run:
+## 🛠️ Built With (Free APIs)
 
-```bash
-ng build
-```
+This project uses entirely free APIs that require no authentication keys:
+- [Nominatim OpenStreetMap](https://nominatim.org/) - For Geocoding (Text to Coordinates) and Reverse Geocoding.
+- [Open-Meteo](https://open-meteo.com/) - For incredibly fast, free weather forecasting data.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Enjoy exploring the weather code!
