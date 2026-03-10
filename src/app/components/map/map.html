@@ -1,0 +1,41 @@
+<div #mapElement class="map-container"></div>
+
+<!-- Overlay controls -->
+<div class="map-controls ui-layer">
+
+    <!-- Zoom Controls -->
+    <div class="zoom-cluster glass-panel p-1 rounded-pill d-flex flex-column align-items-center mb-3">
+        <button mat-icon-button (click)="zoomMap(1)" aria-label="Zoom in">
+            <mat-icon>add</mat-icon>
+        </button>
+        <div class="divider"></div>
+        <button mat-icon-button (click)="zoomMap(-1)" aria-label="Zoom out">
+            <mat-icon>remove</mat-icon>
+        </button>
+    </div>
+
+    <!-- Geolocation -->
+    <button mat-fab color="primary" class="geo-btn mb-3" (click)="geolocate()" aria-label="Find my location">
+        <mat-icon>my_location</mat-icon>
+    </button>
+
+    <!-- Pan Controls -->
+    <div class="nav-cluster glass-panel p-2 rounded-circle d-flex flex-column align-items-center">
+        <button mat-icon-button (click)="panMap('up')" aria-label="Pan up">
+            <mat-icon>keyboard_arrow_up</mat-icon>
+        </button>
+
+        <div class="d-flex w-100 justify-content-between my-1 px-1">
+            <button mat-icon-button (click)="panMap('left')" aria-label="Pan left">
+                <mat-icon>keyboard_arrow_left</mat-icon>
+            </button>
+            <button mat-icon-button (click)="panMap('right')" aria-label="Pan right">
+                <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+        </div>
+
+        <button mat-icon-button (click)="panMap('down')" aria-label="Pan down">
+            <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+.app-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.map-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.ui-layer {
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
+    /* Let clicks pass through panels to map */
+}
+
+.ui-layer>* {
+    pointer-events: auto;
+    /* Re-enable clicks on the actual UI components */
+}
+
+.right-sidebar {
+    top: 0;
+    right: 0;
+    width: 400px;
+    max-width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.glass-sidebar {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: -8px 0 32px rgba(31, 38, 135, 0.1);
+}
+
+/* Customize scrollbar inside sidebar */
+.right-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.right-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.right-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+}

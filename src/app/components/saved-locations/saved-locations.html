@@ -1,0 +1,42 @@
+<div class="saved-panel glass-panel">
+    <h4 class="mb-3 text-primary fw-bold">Saved Locations</h4>
+
+    <ng-container *ngIf="savedLocations$ | async as locations">
+        <div class="table-container" *ngIf="locations.length > 0; else noData">
+            <table mat-table [dataSource]="locations" class="w-100 bg-transparent custom-table">
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef class="text-secondary fw-semibold">City</th>
+                    <td mat-cell *matCellDef="let element" class="text-truncate" style="max-width: 130px;"
+                        [title]="element.name">
+                        {{element.name}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="temp">
+                    <th mat-header-cell *matHeaderCellDef class="text-secondary fw-semibold">°C</th>
+                    <td mat-cell *matCellDef="let element"><strong>{{element.temp}}</strong></td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element" class="text-end py-1">
+                        <button mat-icon-button color="warn" (click)="remove(element); $event.stopPropagation()">
+                            <mat-icon>delete_outline</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="select(row)" class="hover-row">
+                </tr>
+            </table>
+        </div>
+
+        <ng-template #noData>
+            <p class="text-muted small m-0 text-center py-4 bg-white bg-opacity-50 rounded">
+                No locations saved yet.<br>Click the bookmark icon to save one.
+            </p>
+        </ng-template>
+    </ng-container>
+</div>

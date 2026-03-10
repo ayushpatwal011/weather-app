@@ -1,0 +1,30 @@
+<div class="search-container glass-panel shadow-sm d-flex flex-column gap-2 w-100">
+    <!-- Search Type Toggle -->
+    <div class="d-flex w-100 bg-white bg-opacity-50 rounded p-1">
+        <button class="btn btn-sm w-50 rounded" [class.btn-primary]="searchType === 'city'"
+            [class.btn-light]="searchType !== 'city'" (click)="searchType = 'city'">City</button>
+        <button class="btn btn-sm w-50 rounded" [class.btn-primary]="searchType === 'coords'"
+            [class.btn-light]="searchType !== 'coords'" (click)="searchType = 'coords'">Coordinates</button>
+    </div>
+
+    <!-- City Search Input -->
+    <div class="d-flex w-100 align-items-center" *ngIf="searchType === 'city'">
+        <input type="text" class="form-control me-2 bg-transparent border-0 shadow-none"
+            placeholder="Search city name..." [(ngModel)]="query" (keyup.enter)="onSearch()">
+        <button mat-icon-button color="primary" (click)="onSearch()" aria-label="Search city">
+            <mat-icon>search</mat-icon>
+        </button>
+    </div>
+
+    <!-- Lat/Lon Search Input -->
+    <div class="d-flex w-100 align-items-center gap-2" *ngIf="searchType === 'coords'">
+        <input type="number" class="form-control bg-transparent border-0 shadow-none px-1" placeholder="Lat"
+            [(ngModel)]="latQuery" (keyup.enter)="onSearchCoords()">
+        <div style="width: 1px; height: 20px; background: rgba(0,0,0,0.1);"></div>
+        <input type="number" class="form-control bg-transparent border-0 shadow-none px-1" placeholder="Lon"
+            [(ngModel)]="lonQuery" (keyup.enter)="onSearchCoords()">
+        <button mat-icon-button color="primary" (click)="onSearchCoords()" aria-label="Search coordinates">
+            <mat-icon>travel_explore</mat-icon>
+        </button>
+    </div>
+</div>

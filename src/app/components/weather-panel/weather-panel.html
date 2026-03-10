@@ -1,0 +1,27 @@
+<div class="weather-panel glass-panel" *ngIf="location$ | async as loc">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="m-0 location-title text-primary">{{loc.name}}</h3>
+        <button mat-icon-button color="primary" (click)="saveLocation()" aria-label="Save this location">
+            <mat-icon>bookmark_add</mat-icon>
+        </button>
+    </div>
+
+    <div class="current-weather text-center" *ngIf="weather$ | async as weather; else loading">
+        <h1 class="display-3 fw-bold text-dark m-0">
+            {{weather.current_weather?.temperature ?? 'N/A'}}<small class="fs-4">°C</small>
+        </h1>
+        <p class="text-secondary small mb-4">Current Temperature</p>
+
+        <div class="chart-container">
+            <canvas #forecastChart></canvas>
+        </div>
+    </div>
+
+    <ng-template #loading>
+        <div class="d-flex justify-content-center align-items-center py-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </ng-template>
+</div>

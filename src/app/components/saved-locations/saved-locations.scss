@@ -1,0 +1,53 @@
+.glass-panel {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+}
+
+.table-container {
+    max-height: 250px;
+    overflow-y: auto;
+    border-radius: 12px;
+}
+
+/* Customizing mat-table to fit transparent design */
+.custom-table {
+    background: transparent !important;
+}
+
+.custom-table th.mat-header-cell {
+    background: rgba(255, 255, 255, 0.5);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    font-size: 0.85rem;
+}
+
+.custom-table td.mat-cell {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.hover-row {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.hover-row:hover {
+    background-color: rgba(66, 165, 245, 0.1) !important;
+}
+
+/* Hide scrollbar for a cleaner look */
+.table-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
